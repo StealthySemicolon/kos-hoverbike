@@ -3,12 +3,14 @@ clearscreen.
 lock currentPitch to 90 - VECTORANGLE(UP:VECTOR, SHIP:FACING:FOREVECTOR).
 lock currentroll TO 90 - VECTORANGLE(UP:VECTOR, SHIP:FACING:STARVECTOR).
 lock vert  to ship:verticalspeed.
-lock g to constant:g * body:mass / body:radius^2.
+lock g to constant:g * body:mass / (body:radius + ship:altitude)^2.
 lock maxAccel to (maxThrust / ship:mass).
 
-//lock downForce to max(cos(currentPitch) * cos(currentRoll) * maxAccel, 1).
-lock downForce to max(maxAccel, 1).
+lock downForce to max(cos(currentPitch) * cos(currentRoll) * maxAccel, 1).
+//lock downForce to max(maxAccel, 1).
 lock upG to downForce / g.
+
+declare global altKd to 0.01.
 
 set tgtAlt to 100.
 on ag9{
@@ -33,7 +35,7 @@ until false{
     print "Current target altitude: " + tgtAlt + "        " at (0, 7).
     print "Landing mode(AG5): " + ag5 + "        " at (0, 8).
     if ag2 = true{
-        lock throttle to ((1/upG) - (vert * 0.1) + ((tgtAlt - currAlt) * 0.01)).
+        lock throttle to ((1/upG) - (vert * 0.1) + ((tgtAlt - currAlt) * altKd)).
     }
     else{
         unlock throttle.
