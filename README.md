@@ -7,10 +7,10 @@ using the data from the bike's pitch and roll. This allows the janky PID control
 maintain a certain altitude from the ground. The distance of ground *is not* from the bottom of the
 bike, rather from the center of mass. **USE LANDING MODE WITH CAUTION**
 
-## Licence
+## License
 The Software Kompany™ ***DOES NOT*** provide any warranty for damages done directly or indirectly
 from the use of this software program.
 
-That isn't the actual licence. For the real licence see [LICENCE](https://github.com/sagarreddypatil/kos-hoverbike/blob/master/LICENSE).
+That isn't the actual license. For the real licence see [LICENSE](https://github.com/sagarreddypatil/kos-hoverbike/blob/master/LICENSE).
 
 ## Good Luck!
